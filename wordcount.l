@@ -1,16 +1,15 @@
-/* just like Unix wc */
 %{
-int n,m,t,c;
+int n,w,c;
 %}
 %%
-\n n++;
-\t m++;
-[ ] t++;
-. c++;
-
+\n 		n++;
+[^\n\t]+ 	{ w++ ; c=c+yyleng ;}
+. 		c++;
 %%
-main(int argc, char **argv)
+int main()
 {
- yylex();
-printf("total number of lines %d \n tabs %d\n spaces %d \n chars %d",n,m,t,c);
+extern FILE *yyin;
+yyin=fopen("input.txt","r");
+yylex();
+printf("line =%d \n word= %d char=%d",n,w,c);
 }
