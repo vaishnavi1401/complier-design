@@ -1,5 +1,5 @@
 # complier-design
-***steps to run a lex program***
+***steps to run a lex program***\n
 1.create a file with lex program 
 2. save it with .l extension 
 3.compile using:lex filename.l 
